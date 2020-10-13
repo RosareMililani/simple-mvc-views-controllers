@@ -15,3 +15,14 @@ const hostPage1 = (req, res) => {
 const hostPage2 = (req, res) => {
   res.sendFile(path.resolve(`${__dirname}/../../views/page2.html`));
 };
+
+const notFound = (req,res) =>{
+  res.status(404).sendFile(path.resolve(`${__dirname}/../../views/notFound.html`));
+}
+
+module.exports = {
+  index: hostIndex,
+  page1: hostPage1,
+  page2: hostPage2,
+  notFound: notFound
+}

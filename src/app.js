@@ -14,4 +14,21 @@ const app = express();
 app.use('/assets', express.static(path.resolve(`${__dirname}/../client/`)));
 app.use(compression());
 
+//added
+app.use(bodyParser.urlencoded({extended:true})); // x-www-form-encoded & value=true&number=10
 
+app.set('view engine','handlerbars');
+app.set('views',`${__dirname}/../views`);
+
+app.use(favicon(`${__dirname}/../client/img/favicon.png`));
+
+app.use(cookieParser());
+
+router(app);
+
+app.listen(port,(err)=>{
+  if(err){
+    throw err;
+  }
+  console.log(`Listening on port ${port}`);
+});
